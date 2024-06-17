@@ -1,10 +1,3 @@
-{#
-| Variable         | Type    | Description                     |
-|------------------|---------|---------------------------------|
-| cart             | object  |                                 |
-| cart.items_count | int     |                                 |
-| cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
-#}
 {% set important_links = theme.settings.get('important_links') %}
 <header class="store-header">
   {# Top Nav #}
@@ -17,15 +10,8 @@
           {% endif %}
 
           {# Language & Currency Component #}
-          <div class="header-buttons">
-              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                  <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
-                      <span class="flag iti__flag iti__{{ user.language.country_code }} rounded-sm"></span>
-                      <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
-                  </button>
-                  <salla-localization-modal></salla-localization-modal>
-              {% endif %}
-          </div>
+         
+          <salla-button onclick="search.open()">Search</salla-button>
 
           {# Scopes | Branches #}
           {% if store.scope %}
@@ -36,13 +22,8 @@
           {% endif %}
 
           {# Search bar #}
-          <div class="flex items-center" style="position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);">
-            
-            <div>
-                <a class="navbar-brand" href="{{ store.url }}">
+          <div class="header-buttons">
+            <a class="navbar-brand" href="{{ store.url }}">
               <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
               {% if is_page('index') %}
                 <h1 class="sr-only">{{ store.name }}</h1>
@@ -50,14 +31,7 @@
                 <h2 class="sr-only">{{ store.name }}</h2>
               {% endif %}
           </a>
-            </div>
-          
           </div>
-      </div>
-
-      <salla-contacts is-header></salla-contacts>
-    </div>
-  </div>
 
   {# Main Nav #}
   <div id="mainnav" class="main-nav-container shadow-default bg-white">
@@ -100,3 +74,23 @@
 {% endif %}
 
 
+
+--------------
+
+<header class="store-header">
+
+ {# {% component 'contacts' with {isheader:true}%}#}
+
+ <div>
+  <salla-contacts is-header=“false” hide-title=“true”></salla-contacts>
+      
+  # salla-social component included  
+   <div>
+     <salla-contacts></salla-contacts>
+     <div class="lg:hidden contact-social">
+        <salla-social></salla-social>
+     </div>
+  </div>
+ </div>
+
+</header>

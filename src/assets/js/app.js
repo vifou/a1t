@@ -315,3 +315,7 @@ isElementLoaded(selector){
 }
 
 salla.onReady(() => (new App).loadTheApp());
+
+
+// Save reference to the Search Component below
+var search = document.querySelector("salla-search");
