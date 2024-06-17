@@ -93,3 +93,10 @@
 @import 'lite-youtube-embed';
 //@import 'swiper/css/bundle';
 @import 'mmenu-light/dist/mmenu-light.css';
+
+@mixin logo-vi {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
