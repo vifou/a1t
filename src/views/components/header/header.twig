@@ -37,7 +37,15 @@
 
           {# Search bar #}
           <div class="header-search flex-1">
-            <salla-search inline oval height="36"></salla-search>
+            <salla-contacts is-header=“true” hide-title=“true”></salla-contacts>
+      
+# salla-social component included  
+ <div>
+   <salla-contacts></salla-contacts>
+   <div class="lg:hidden contact-social">
+      <salla-social></salla-social>
+   </div>
+</div>
           </div>
       </div>
 
